@@ -1,5 +1,6 @@
 import random
 import socket
+import requests
 import time
 from _thread import *
 import threading
@@ -10,7 +11,7 @@ clients_lock = threading.Lock()
 
 def getUserELO(userID):
     url = "https://k1zg78a86f.execute-api.us-east-2.amazonaws.com/default/returnELOfromID/?" + userID
-    response = requests.getURL(url)
+    response = requests.get(url)
     return json.loads(response.content)
 
 
