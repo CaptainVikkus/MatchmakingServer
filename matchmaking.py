@@ -17,11 +17,12 @@ def getUserELO(userID):
 def connectionLoop(sock):
    while True:
       #message
-      gameData = { "GameID" : random.randint(0, 1000), "Players" : []}
+      gameData = { "GameID" : random.
+                  randint(0, 1000), "Players" : []}
       #wait for data
       data, addr = sock.recvfrom(1024)
-      print(str(data));
-      jdata.loads(data)
+      print(str(data))
+      jdata = json.loads(data)
       print(jdata["Users"])
 
       #matchmake
