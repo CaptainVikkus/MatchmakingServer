@@ -39,7 +39,7 @@ def connectionLoop(sock):
           player['ELO'] = elo
           print(elo)
 
-          if (elo < targetELO + 500 & elo > targetELO - 500 ): #only elo valid players
+          if (elo < targetELO + 500 and elo > targetELO - 500 ): #only elo valid players
               gameData["Players"].append(player)
               numPlayers += 1
               print("Added " + player['UserID'] + " to match")
