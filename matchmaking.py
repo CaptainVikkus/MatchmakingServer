@@ -24,8 +24,8 @@ def connectionLoop(sock):
                   randint(0, 1000), "Players" : []}
       #wait for data
       data, addr = sock.recvfrom(1024)
-      print(str(data))
       jdata = json.loads(data)
+      print("Match Start:")
       print(jdata["Users"])
 
       #matchmake
@@ -40,8 +40,10 @@ def connectionLoop(sock):
           if (elo < targetELO + 500 & elo > targetELO - 500 ): #only elo valid players
               gameData["Players"].append(player)
               numPlayers += 1
+              print("Added " + player['UserID'] + " to match")
           if (numPlayers == 3): #full match check
               break
+      print(len(gameData["Players"]))
       if (len(gameData["Players"]) < 2): #invalid match
           gameData["GameID"] = -1
       #send data
