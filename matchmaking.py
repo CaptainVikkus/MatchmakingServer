@@ -13,7 +13,7 @@ def getUserELO(userID):
     print("Getting ELO for " + userID)
     url = "https://k1zg78a86f.execute-api.us-east-2.amazonaws.com/default/returnELOfromID/?USERID=" + userID
     response = requests.get(url)
-    print(response.content)
+    #print(response.content)
     return int(json.loads(response.content))
 
 
@@ -30,12 +30,14 @@ def connectionLoop(sock):
 
       #matchmake
       targetELO = getUserELO(jdata["Users"][0])
+      print(targetELO)
       numPlayers = 0
       for user in jdata["Users"]:
           player = {}
           player['UserID'] = user
           elo = getUserELO(user)
           player['ELO'] = elo
+          print(elo)
 
           if (elo < targetELO + 500 & elo > targetELO - 500 ): #only elo valid players
               gameData["Players"].append(player)
