@@ -14,7 +14,7 @@ def getUserELO(userID):
     url = "https://k1zg78a86f.execute-api.us-east-2.amazonaws.com/default/returnELOfromID/?USERID=" + userID
     response = requests.get(url)
     print(response.content)
-    return json.loads(response.content)
+    return int(json.loads(response.content))
 
 
 def connectionLoop(sock):
