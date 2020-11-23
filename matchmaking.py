@@ -42,7 +42,7 @@ def connectionLoop(sock):
               numPlayers += 1
           if (numPlayers == 3): #full match check
               break
-      if (gameData["Players"].count() < 2): #invalid match
+      if (len(gameData["Players"]) < 2): #invalid match
           gameData["GameID"] = -1
       #send data
       s = json.dumps(gameData)
