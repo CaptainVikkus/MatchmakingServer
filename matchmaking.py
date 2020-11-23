@@ -10,6 +10,7 @@ import json
 clients_lock = threading.Lock()
 
 def getUserELO(userID):
+    print("Getting ELO for " + userID)
     url = "https://k1zg78a86f.execute-api.us-east-2.amazonaws.com/default/returnELOfromID/?" + userID
     response = requests.get(url)
     print(response.content)
